@@ -43,12 +43,17 @@ class User extends Authenticatable
     ];
     
      //一人のユーザーは、複数「いいね」をする可能性がある
-     public function items() {
-        return $this->hasMany('App\Models\Item');
-    }
-     public function nices() {
-        return $this->hasMany('App\Models\Nice');
-    }
+    //  public function items() {
+    //     return $this->hasMany('App\Models\Item');
+    // }
+    //  public function nices() {
+    //     return $this->hasMany('App\Models\Nice');
+    // }
+    
+    // Itemsテーブルとのリレーション （主テーブル側）
+    //  public function items() {
+    //     return $this->hasMany('App\Models\Item');
+    // }
     
     
 }

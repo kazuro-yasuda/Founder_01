@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('name, 200');
 	        $table->integer('company_id');
 	        $table->text('text');
-	        $table->integer('current_ranking');
-	        $table->integer('price');
+	        $table->integer('current_ranking')->nullable();
+	        $table->integer('price')->nullable();
 	        $table->integer('video_id');
+	        $table->integer('img_id')->nullable();
             $table->timestamps();
         });
     }

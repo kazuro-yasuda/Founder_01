@@ -2,7 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\WelcomeFounderController;
+use App\Http\Controllers\LargeCategoryController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemsAdminController;
+use App\Http\Controllers\CompareController;
+// use App\Http\Controllers\ItemsAdminController;//追記
 
 /*
 |--------------------------------------------------------------------------
@@ -15,31 +21,37 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome_founder');
-});
+//トップページ表示
+Route::get('/', [WelcomeFounderController::class, 'index']);
 
-Route::get('/categories', function () {
-    return view('categories');
-});
-
-Route::get('/items',   function (){
-    return view('items');
-});
+//大カテゴリーページ表示
+Route::get('/categories',  [LargeCategoryController::class, 'index']);
+    
+//商品一覧ページ表示
+Route::get('/items',   [ItemsController::class, 'index']);
 
 // いいねボタン
 // Route::get('/items/nice/{item}', 'NiceController@nice')->name('nice');
 // Route::get('/items/unnice/{item}', 'NiceController@unnice')->name('unnice');
 
-Route::get('/item', function () {
-    return view('item');
-});
+//商品詳細ページ表示
+Route::get('/item', [ItemController::class, 'index']);
 
-Route::get('/compare', function () {
-    return view('compare');
-});
+//比較ページ表示
+Route::get('/compare', [CompareController::class, 'index']);
 
 
+
+Route::get('/items_admin', [ItemsAdminController::class, 'index']);
+
+Route::post('/items_admin', [ItemsAdminController::class, 'store']);
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

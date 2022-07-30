@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('item_id');
             $table->string('name');
+            $table->integer('img_url')->nullable();
             $table->timestamps();
         });
     }
