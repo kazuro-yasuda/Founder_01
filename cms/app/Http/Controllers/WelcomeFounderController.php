@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use Validator;
 
 class WelcomeFounderController extends Controller
@@ -12,6 +13,10 @@ class WelcomeFounderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+ 
+    
+    
     public function index()
     {
      return view('welcome_founder');
@@ -82,4 +87,6 @@ class WelcomeFounderController extends Controller
     {
         //
     }
+    
+
 }

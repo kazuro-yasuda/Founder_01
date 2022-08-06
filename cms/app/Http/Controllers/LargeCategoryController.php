@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Large_category;
 use Illuminate\Http\Request;
+
 use Validator;
 
 class LargeCategoryController extends Controller
@@ -13,6 +14,8 @@ class LargeCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    
     public function index()
     {
         return view('categories');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Intereste;
 use Illuminate\Http\Request;
+use Auth;
 
 class InteresteController extends Controller
 {

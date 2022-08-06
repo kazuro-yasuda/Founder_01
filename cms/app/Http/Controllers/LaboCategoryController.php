@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Labo_category;
 use Illuminate\Http\Request;
 
+
 class LaboCategoryController extends Controller
 {
     /**

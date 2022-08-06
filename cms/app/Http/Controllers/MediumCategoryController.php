@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Medium_category;
 use Illuminate\Http\Request;
 
+
 class MediumCategoryController extends Controller
 {
     /**

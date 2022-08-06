@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Item; //この行を上に追加
-use App\Models\User;//この行を上に追加
-use App\Models\Images;
-use Auth;//この行を上に追加
-use Validator;//この行を上に追加
+
+use App\Models\Item;
+use App\Models\User;
+use App\Models\Image;
+use App\Models\Video;
+use App\Models\Company;
+use App\Models\Large_category;
+use App\Models\Medium_category;
+use Auth;
+use Validator;
 
 use Illuminate\Http\Request;
 
@@ -18,13 +23,7 @@ class ItemsAdminController extends Controller
      */
     public function index()
     {
-         // 全ての登録商品を取得
-        $items = Item::get();
-        
-        return view('items_admin',[
-            'items'=> $items
-            ]);
-        
+          return view('items_admin');
         
     }
 
@@ -46,27 +45,27 @@ class ItemsAdminController extends Controller
      */
     public function store(Request $request)
     {
-       //バリデーション 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:200',
-            'text' => 'required|max:255',
+           //バリデーション
+        $validator = Validator::make($request->all(), 
+        [
+        'name' => 'required|max:255',
         ]);
-        
-        //バリデーション:エラー
+        //バリデーション:エラー 
         if ($validator->fails()) {
-            return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
+        return redirect('/items_admin')
+        ->withInput()
+        ->withErrors($validator);
         }
-        
         //以下に登録処理を記述（Eloquentモデル）
-        $items = new Item;
-        $items->name= $request->name;
-        $items->text = $request->text;
-        $items->user_id = Auth::id();//ここでログインしているユーザidを登録しています
-        $items->save();
-        
-        return redirect('/items_admin');
+        // Eloquent モデル
+         $items= new Item;
+         $items->name = $request->name;
+         $items->medium_category_id = $request->medium_category_id;
+         $items->company_id = $request->company_id;
+         $items->text = $request->text;
+         $items->video_url = $request->video_url;
+         $items->save(); 
+         return redirect('/items_admin');
     }
 
     /**

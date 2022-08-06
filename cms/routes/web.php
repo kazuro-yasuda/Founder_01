@@ -9,6 +9,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsAdminController;
 use App\Http\Controllers\CompareController;
 // use App\Http\Controllers\ItemsAdminController;//追記
+use App\Models\Item;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +25,11 @@ use App\Http\Controllers\CompareController;
 //トップページ表示
 Route::get('/', [WelcomeFounderController::class, 'index']);
 
-//大カテゴリーページ表示
+//カテゴリーページ表示
 Route::get('/categories',  [LargeCategoryController::class, 'index']);
     
 //商品一覧ページ表示
 Route::get('/items',   [ItemsController::class, 'index']);
-
-// いいねボタン
-// Route::get('/items/nice/{item}', 'NiceController@nice')->name('nice');
-// Route::get('/items/unnice/{item}', 'NiceController@unnice')->name('unnice');
 
 //商品詳細ページ表示
 Route::get('/item', [ItemController::class, 'index']);
@@ -42,25 +39,26 @@ Route::get('/compare', [CompareController::class, 'index']);
 
 
 
-Route::get('/items_admin', [ItemsAdminController::class, 'index']);
+// ①商品の追加ダッシュボード表示(items_admin.blade.php)
+ Route::get('/items_admin', [ItemsAdminController::class, 'index']);
+ 
+ // ②商品を追加
+ Route::post('/add_item', [ItemsAdminController::class, 'store']);
+ 
+ 
+// //③商品更新処理
+// Route::post('/@@@',[ItemsAdminController::class, 'update']);
 
-Route::post('/items_admin', [ItemsAdminController::class, 'store']);
+// //④商品削除
+// Route::delete('/@@@k/{@@@}',[ItemsAdminController::class, 'destroy']);
 
 
+// いいねボタン
+// Route::get('/items/nice/{item}', 'NiceController@nice')->name('nice');
+// Route::get('/items/unnice/{item}', 'NiceController@unnice')->name('unnice');
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

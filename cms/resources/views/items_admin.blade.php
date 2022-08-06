@@ -1,6 +1,7 @@
 <!-- resources/views/items_admin.blade.php -->
 @extends('layouts.app')
 @section('content')
+
     <!-- Bootstrapの定形コード… -->
     <div class="card-body">
         <div class="card-title fs-4">
@@ -8,9 +9,9 @@
         </div>
         <!-- バリデーションエラーの表示に使用-->
     	@include('common.errors')
-        <!-- バリデーションエラーの表示に使用-->
+      
         <!-- 商品登録フォーム -->
-        <form action="{{ url('items') }}" method="GET" class="form-horizontal">
+        <form action="{{ url('add_item') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             <!-- 登録商品名 -->
             <div class="form-group">
@@ -51,7 +52,7 @@
             <div class="form-group">
                 実験動画URL
                 <div class="col-sm-6">
-                    <input type="integer" name="video_id" class="form-control">
+                    <input type="integer" name="video_url" class="form-control">
                 </div>
             </div>
             

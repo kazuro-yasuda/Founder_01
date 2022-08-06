@@ -12,19 +12,19 @@
                         @csrf
                         
                          <!--会員種別-->
-                        <div class="row mb-3">
-                            <label for="role_id" class="col-md-4 col-form-label text-md-end">{{ __('会員種別') }}</label>
+                        <!--<div class="row mb-3">-->
+                        <!--    <label for="role_id" class="col-md-4 col-form-label text-md-end">{{ __('会員種別') }}</label>-->
 
-                            <div class="col-md-6">
-                                <input id="role_id" type="integer" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required autocomplete="role_id" autofocus>
+                        <!--    <div class="col-md-6">-->
+                        <!--        <input id="role_id" type="integer" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required autocomplete="role_id" autofocus>-->
 
-                                @error('role_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        <!--        @error('role_id')-->
+                        <!--            <span class="invalid-feedback" role="alert">-->
+                        <!--                <strong>{{ $message }}</strong>-->
+                        <!--            </span>-->
+                        <!--        @enderror-->
+                        <!--    </div>-->
+                        <!--</div>-->
                         
                         <!--ユーザー名-->
                         <div class="row mb-3">
@@ -78,7 +78,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('確認用パスワード') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="string" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         
@@ -86,17 +86,23 @@
                          <!--性別-->
                         <div class="row mb-3">
                             <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('性別') }}</label>
-
+                            
                             <div class="col-md-6">
-                                <input id="gender" type="tinyint" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
-
+                                <select type="tinyint" name="gender" class="form-select @error('gender') is-invalid @enderror" aria-label="Default select example">
+                                  <option selected>--- 選択 ---</option>
+                                  <option value="1" name="男">男</option>
+                                  <option value="2" name="女">女</option>
+                                  <option value="3" name="その他">その他</option>
+                                </select>
+                            </div>
+                            
                                 @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
+                        
                         
                         <!--生年月日-->
                         <div class="row mb-3">
@@ -112,6 +118,8 @@
                                 @enderror
                             </div>
                         </div>
+                        
+                        
                         
                         <!--送信ボタン-->
                         <div class="row mb-0">
