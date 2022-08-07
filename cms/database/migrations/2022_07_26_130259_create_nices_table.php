@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nices', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('nice_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
             $table->timestamps();

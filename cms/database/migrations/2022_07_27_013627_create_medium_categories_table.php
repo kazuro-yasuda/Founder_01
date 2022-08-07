@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('medium_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+            $table->bigIncrements('medium_category_id');
+            $table->string('medium_category_name');
             $table->timestamps();
   
         });

@@ -17,34 +17,51 @@
             <div class="form-group">
                 商品名
                 <div class="col-sm-6">
-                    <input type="string" name="name" class="form-control">
+                    <input type="string" name="item_name" class="form-control">
+                </div>
+            </div>
+            
+             <!-- 大カテゴリー -->
+            <div class="form-group">
+                大カテゴリー　※下記より選択してください※
+                <div class="col-sm-6">
+                    <select type="integer" class="form-control" name="large_category">
+                         @foreach ($large_categories as $large_category)
+                            <option value="{{ $large_category->large_category_id }}">{{ $large_category->large_category_name }}</option>
+                         @endforeach
+                    </select>
                 </div>
             </div>
             
             <!-- 中カテゴリー -->
             <div class="form-group">
-                中カテゴリー
+                 中カテゴリー　※下記より選択してください※
                 <div class="col-sm-6">
-                    <input type="integer" name="medium_category_id" class="form-control">
+                    <select type="integer" class="form-control" name="medium_category">
+                         @foreach ($medium_categories as $medium_category)
+                            <option value="{{ $medium_category->medium_category_id }}">{{ $medium_category->medium_category_name }}</option>
+                         @endforeach
+                    </select>
                 </div>
             </div>
             
-            <!-- メーカーID -->
+            <!-- メーカー名 -->
             <div class="form-group">
-                メーカーID
-                <select type="integer" name="company_id"　class="form-select" aria-label="Default select example">
-                  <option selected>ID選択</option>
-                  <option value="1">１：＠＠＠</option>
-                  <option value="2">２：＠＠＠</option>
-                  <option value="3">３：＠＠＠</option>
-                </select>
+                メーカー名　※下記より選択してください※
+                <div class="col-sm-6">
+                    <select type="integer" class="form-control" name="company">
+                         @foreach ($companies as $company)
+                            <option value="{{ $company->company_id }}">{{ $company->company_name }}</option>
+                         @endforeach
+                    </select>
+                </div>
             </div>
             
             <!-- 説明文 -->
             <div class="form-group">
                 説明文
                 <div class="col-sm-6">
-                    <input type="text" name="text" class="form-control">
+                    <input type="text" name="item_text" class="form-control">
                 </div>
             </div>
             

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@if( Auth::check() )
 @section('content')
 
   <!--メインビジュアル-->
@@ -54,3 +55,4 @@
        </section>
       
 @endsection
+@endif

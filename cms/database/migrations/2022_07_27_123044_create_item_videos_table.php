@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('item_videos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('item_video_id');
             $table->integer('item_id');
             $table->integer('video_id');
             $table->timestamps();

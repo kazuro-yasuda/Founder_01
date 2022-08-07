@@ -25,57 +25,53 @@
         
         <div class="col">
           <div class="card shadow-sm">
-            <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
+           <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="card-body">
-              <p class="card-text">※商品写真※</p>
-              <p class="card-text">花王</p>
-              <p class="card-text">メリーズ</p>            
-             <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                </div>
+              <p class="card-text">メーカー：パンパース</p>
+              <p class="card-text">商品名：はじめての肌へのいちばん</p>
+              <img src="{{asset('img/pampers/pampers-main.jpg')}}" class="w-50">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
+                </div> 
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
-            <div class="card-body">
-              <p class="card-text">※商品写真※</p>
-              <p class="card-text">花王</p>
-              <p class="card-text">メリーズ</p>            
-             <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         
         <div class="col">
           <div class="card shadow-sm">
-            <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
+           <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="card-body">
-              <p class="card-text">※商品写真※</p>
-              <p class="card-text">花王</p>
-              <p class="card-text">メリーズ</p>            
-             <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                </div>
+              <p class="card-text">メーカー：パンパース</p>
+              <p class="card-text">商品名：はじめての肌へのいちばん</p>
+              <img src="{{asset('img/pampers/pampers-main.jpg')}}" class="w-50">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
+                </div> 
               </div>
             </div>
           </div>
         </div>
         
-      
+        <div class="col">
+          <div class="card shadow-sm">
+           <iframe width="100%" height="225" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body">
+              <p class="card-text">メーカー：パンパース</p>
+              <p class="card-text">商品名：はじめての肌へのいちばん</p>
+              <img src="{{asset('img/pampers/pampers-main.jpg')}}" class="w-50">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
   </div>

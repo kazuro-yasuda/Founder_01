@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('large_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+            $table->bigIncrements('large_category_id');
+            $table->string('large_category_name');
             $table->timestamps();
         });
     }

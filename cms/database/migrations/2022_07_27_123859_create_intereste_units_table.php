@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('intereste_units', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('intereste_unit_id');
             $table->integer('user_id');
             $table->timestamps();
         });
