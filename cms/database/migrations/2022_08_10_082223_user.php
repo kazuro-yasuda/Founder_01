@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nices', function (Blueprint $table) {
-            $table->bigIncrements('nice_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('item_id');
-            $table->timestamps();
+        Schema::table('User', function (Blueprint $table) {
+            //
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nices');
+        Schema::table('User', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -44,20 +44,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-     //一人のユーザーは、複数「いいね」をする可能性がある
-    //  public function items() {
-    //     return $this->hasMany('App\Models\Item');
-    // }
-    //  public function nices() {
-    //     return $this->hasMany('App\Models\Nice');
-    // }
-    
     // Itemsテーブルとのリレーション （主テーブル側）
-    //  public function items() {
-    //     return $this->hasMany('App\Models\Item');
-    // }
+     public function items() {
+        return $this->hasMany('App\Models\Item');
+    }
     
     
+     // Itemsテーブルとの多対多リレーション（中間テーブル用）
+     //一人のユーザーは、複数の商品に「いいね」できる
+     public function nice_items() {
+        return $this->belongsToMany('App\Models\Item');
+    }
+    
+
+
 }
 
 

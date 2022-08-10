@@ -22,7 +22,7 @@
       
        <div class="col">
         <div class="card bg-dark text-white">
-          <a href="items"><img src="img/omutu.jpg" class="card-img rounded" alt="..."></a>
+          <a href="/items"><img src="img/omutu.jpg" class="card-img rounded" alt="..."></a>
         </div>
       </div>
       

@@ -2,6 +2,7 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="container">
     <!-- Bootstrapの定形コード… -->
     <div class="card-body">
         <div class="card-title fs-4">
@@ -73,6 +74,18 @@
                 </div>
             </div>
             
+           
+            <div class="form-group">
+                 画像①：メイン（商品パッケージ）
+                <div class="col-sm-6">
+                    <form method="POST" action="/upload" enctype="multipart/form-data"　class="form-control ">
+                      @csrf
+                      <input type="file" name="image" accept="image/png,image/jpeg,image/jpg">
+                      <button>Upload</button>
+                    </form>
+                </div>
+            </div>
+
             <!--<form action="{{ url('imges') }}" method="POST" enctype="multipart/form-data">-->
             <!--    {{ csrf_field() }}-->
             <!--    <div class="form-group">-->
@@ -90,6 +103,6 @@
             </div>
         </form>
     </div>
-
+</div>
     
 @endsection

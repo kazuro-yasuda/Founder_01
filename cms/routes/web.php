@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\WelcomeFounderController;
-use App\Http\Controllers\LargeCategoryController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsAdminController;
 use App\Http\Controllers\CompareController;
+use App\Http\Controllers\MediumCategoryController;
 // use App\Http\Controllers\ItemsAdminController;//追記
 use App\Models\Item;
 
@@ -25,8 +25,8 @@ use App\Models\Item;
 //トップページ表示
 Route::get('/', [WelcomeFounderController::class, 'index']);
 
-//カテゴリーページ表示
-Route::get('/categories',  [LargeCategoryController::class, 'index']);
+//中カテゴリーページ表示
+Route::get('/categories',  [MediumCategoryController::class, 'index']);
     
 //商品一覧ページ表示
 Route::get('/items',   [ItemsController::class, 'index']);
@@ -54,8 +54,8 @@ Route::get('/compare', [CompareController::class, 'index']);
 
 
 // いいねボタン
-// Route::get('/items/nice/{item}', 'NiceController@nice')->name('nice');
-// Route::get('/items/unnice/{item}', 'NiceController@unnice')->name('unnice');
+ Route::post('/items/{item_id}', [ItemsController::class, 'nice']); 
+
 
 
 Auth::routes();

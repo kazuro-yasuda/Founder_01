@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index()
     {
         return view('item');
-    }
+      }
 
     /**
      * Show the form for creating a new resource.
