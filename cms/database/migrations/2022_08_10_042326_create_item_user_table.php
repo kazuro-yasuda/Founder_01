@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('item_user', function (Blueprint $table) {
-            $table->bigIncrements('nice_id');
-            $table->unsignedBigInteger('id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade'); //外部キー参照
-            $table->foreign('item_id')->references('item_id')->on('items')->onDelete('cascade'); //外部キー参照
-            $table->unique(['id', 'item_id'],'uq_roles'); //Laravelは複合主キーが扱いにくいのでユニークで代用
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //外部キー参照
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade'); //外部キー参照
+            $table->unique(['user_id', 'item_id'],'uq_roles'); //Laravelは複合主キーが扱いにくいのでユニークで代用
             $table->timestamps();
         });
     }

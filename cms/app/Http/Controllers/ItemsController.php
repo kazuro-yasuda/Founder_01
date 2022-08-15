@@ -16,10 +16,15 @@ class ItemsController extends Controller
     public function index()
     {
         // $items = Item::all();
-        $items = Item::orderBy( 'current_ranking', 'asc')->get();
-        //   dd($items);
+        $items = Item::with('company')->get();
+        
+        //ランキング順に
+        $items = $items->sortBy('current_ranking')->values();
+        
+        //dd($items);
         return view('items',['items'=> $items]);
     }
+    
     
     
     //ログインユーザーが、商品に「いいね」をすると中間テーブルにデータ保存
@@ -30,7 +35,9 @@ class ItemsController extends Controller
         
         //お気に入りする商品
         $item = Item::find($item_id);
-        
+        //$item = Item::where('item_id',$item_id)->firstOrFail();
+    
+    
         //リレーションの登録
         $item->nice_users()->attach($user);
         

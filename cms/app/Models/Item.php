@@ -11,8 +11,9 @@ class Item extends Model
     
      // Companiesテーブルとのリレーション （従テーブル側）
      //ひとつの商品は、ひとつのブランドに紐づく
-     public function comapnies() {
+     public function company() {
         return $this->belongsTo('App\Models\Company');
+        //return $this->belongsTo('App\Models\Company','company_id','company_id');
     }
     
     // Medium_categoriesテーブルとのリレーション （従テーブル側）
@@ -31,7 +32,6 @@ class Item extends Model
      public function user() {
         return $this->belongsTo('App\Models\User');
     }
-    
      // Userテーブルとの多対多リレーション（中間テーブル用）
      //ひとつの商品は、複数ユーザーに「いいね」される
      public function nice_users() {

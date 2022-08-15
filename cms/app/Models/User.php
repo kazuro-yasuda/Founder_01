@@ -56,6 +56,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Item');
     }
     
+    // 気になるユニットテーブルとのリレーション （主テーブル側）
+    //一人のユーザーは、複数の気になる商品を持つ
+     public function units() {
+        return $this->hasMany('App\Models\Unite');
+    }
+    
 
 
 }

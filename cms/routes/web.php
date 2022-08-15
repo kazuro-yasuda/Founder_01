@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsAdminController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\MediumCategoryController;
+use App\Http\Controllers\ImageController;
 // use App\Http\Controllers\ItemsAdminController;//追記
 use App\Models\Item;
 
@@ -54,7 +55,14 @@ Route::get('/compare', [CompareController::class, 'index']);
 
 
 // いいねボタン
- Route::post('/items/{item_id}', [ItemsController::class, 'nice']); 
+ Route::post('/items/{itemid}', [ItemsController::class, 'nice']); 
+ 
+//画像アップロード画面表示
+//Route::get('/image', [ImageController::class, 'index']);
+
+//画像アップロード処理
+//Route::post('/image/upload',[ImageController::class, 'upload']);
+
 
 
 

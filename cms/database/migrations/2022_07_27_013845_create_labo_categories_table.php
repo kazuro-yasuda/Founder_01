@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('labo_categories', function (Blueprint $table) {
-            $table->bigIncrements('labo_category_id');
-            $table->string('labo_category_name');
+            $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }

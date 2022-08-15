@@ -2,21 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Intereste;
+use App\Models\Unite;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Auth;
+use Validator;
 
-class InteresteController extends Controller
+class UniteController extends Controller
 {
+    
+      public function __construct()
+    {
+        $this->user = new User();
+      
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    public function index(Request $request)
+     {
+         $users = User::all();
+         return view('items', compact('users'));
+    
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -36,16 +48,24 @@ class InteresteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        //以下に登録処理を記述（Eloquentモデル）
+        // Eloquent モデル
+         $unites= new Unite;
+         $unites->user_id = $request->user_id;
+         $unites->save(); 
+         
+        return redirect('/items');
+      }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Intereste  $intereste
+     * @param  \App\Models\Unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function show(Intereste $intereste)
+    public function show(Unite $unite)
     {
         //
     }
@@ -53,10 +73,10 @@ class InteresteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Intereste  $intereste
+     * @param  \App\Models\Unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function edit(Intereste $intereste)
+    public function edit(Unite $unite)
     {
         //
     }
@@ -65,10 +85,10 @@ class InteresteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Intereste  $intereste
+     * @param  \App\Models\Unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Intereste $intereste)
+    public function update(Request $request, Unite $unite)
     {
         //
     }
@@ -76,10 +96,10 @@ class InteresteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Intereste  $intereste
+     * @param  \App\Models\Unite  $unite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Intereste $intereste)
+    public function destroy(Unite $unite)
     {
         //
     }

@@ -5,9 +5,10 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">紙オムツ</h1>
+         <!--※要実装：medium_category_name　を引っ張ってくる！-->
+        <h1 class="fw-light fw-bold text-danger">紙オムツ</h1>
         <iframe width="560" height="315" 
-         src="https://www.youtube.com/embed/dH988mw_kTg" 
+         src="https://www.youtube.com/embed/dH988mw_kTg?autoplay=10?autoplay=1&mute=1" 
          title="YouTube video player" 
          frameborder="0" 
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -31,58 +32,71 @@
     </a>
   </div>
 
+
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       
+      
         @foreach ($items as $item)
+   
           <div class="col">
             <div class="card shadow-sm">
-              <!--動画-->
-               <iframe width="100%" height="225" 
-               src={{ $item->video_url }}
-               title="YouTube video player" 
-               frameborder="0" 
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-               allowfullscreen>
-               </iframe>
+              <div>
+                  @if ($loop->iteration)
+                  <p class="badge bg-danger fs-4">{{$item->current_ranking}}位</p>
+                  @endif
+              </div>
               
-              <div class="card-body">
-                <!--ブランド名-->
-                <p class="card-text">ブランド名：{{ $item->company_id}}</p>
-                
-              　<!--商品名-->
-                <p class="card-text">商品名：{{ $item->item_name }}</p>
-                
-                <!--商品画像-->
-                 <!--// <img src="{{ $item->img_url }}" class="w-50">-->
-                <img src="{{asset('img/pampers/pampers-main.jpg')}}" class="w-50">
-                
-                <div class="d-flex justify-content-between align-items-center">
+                <!--動画-->
+                 <iframe width="100%" height="225" 
+                 src={{ $item->video_url1 }}
+                 title="YouTube video player" 
+                 frameborder="0" 
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                 allowfullscreen>
+                 </iframe>
+                 
+                <div class="card-body">
+                  <!--ブランド名-->
+                  <p class="card-text fs-5">ブランド名：{{ $item->company->name}}</p>
                   
-                  <!--詳細ボタン-->
-                  <div>
-                    <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
-                  </div> 
+                　<!--商品名-->
+                  <p class="card-text fs-4 fw-bold">商品名：{{ $item->name }}</p>
                   
-                  <!--いいね！ボタン-->
-                  <form action="{{ url('/items/'.$item->item_id) }}" method="POST">
-                  	{{ csrf_field() }}
-                  	<button type="submit" class="btn btn-danger">
-                  	いいね！
-                  	</button>
-                  </form>
+                  <!--商品画像-->
+                  <img src="{{ asset('uploads/' . $item->img_url_main) }}" class="w-50">
+             
                   
-                   <!--気になるボタン-->
-                  <div class="form-check">
-                      <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label fs-4 " for="flexCheckDefault">気になる</label>
+                  <div class="d-flex justify-content-between align-items-center">
+                    
+                    <!--詳細ボタン-->
+                    <div>
+                      <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
+                    </div> 
+                    
+                    <!--いいね！ボタン-->
+                    <form action="{{ url('/items/'.$item->id) }}" method="POST">
+                    	{{ csrf_field() }}
+                    	<button type="submit" class="btn btn-danger">
+                    	いいね！
+                    	</button>
+                    </form>
+                    
+                     <!--気になるボタン-->
+                       
+                       
+                       
+                       
+                       
+                    
                   </div>
                 </div>
-              </div>
             </div>
-          </div>
+       </div>
         @endforeach
+    
+      
         
       
       </div>

@@ -13,6 +13,7 @@ class Company extends Model
     //ひとつのブランドは、複数の商品を持つ
      public function items() {
         return $this->hasMany('App\Models\Item');
+        //return $this->hasMany('App\Models\Item','company_id','company_id');
     }
     
    

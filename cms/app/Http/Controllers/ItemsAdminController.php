@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\User;
-use App\Models\Image;
-use App\Models\Video;
 use App\Models\Company;
 use App\Models\Large_category;
 use App\Models\Medium_category;
 use Auth;
 use Validator;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 
@@ -60,7 +59,9 @@ class ItemsAdminController extends Controller
            //バリデーション
         $validator = Validator::make($request->all(), 
         [
-        'item_name' => 'required|max:255',
+        'name' => 'required|max:255',
+        'text' => 'required|max:400',
+        'img_url_main' => 'required|file|image|max:2048', 
         ]);
         //バリデーション:エラー 
         if ($validator->fails()) {
@@ -68,23 +69,46 @@ class ItemsAdminController extends Controller
         ->withInput()
         ->withErrors($validator);
         }
+        
+        // 画像ファイル取得
+        $file = $request->img_url_main;
+        
+         if ( !empty($file) ) {
+
+        // ファイルの拡張子取得
+        $ext = $file->guessExtension();
+
+        //ファイル名を生成
+        $fileName = Str::random(32).'.'.$ext;
+
+    
         //以下に登録処理を記述（Eloquentモデル）
         // Eloquent モデル
          $items= new Item;
-         $items->item_name = $request->item_name;
+         $items->name = $request->name;
          $items->medium_category_id = $request->medium_category;
          $items->company_id = $request->company;
-         $items->item_text = $request->item_text;
-         $items->video_url = $request->video_url;
+         $items->text = $request->text;
+         $items->video_url1 = $request->video_url1;
+         $items->img_url_main = $fileName;
          $items->save(); 
          
-         //（確認）items_adminにフォームを作る＆DB登録は下記の考えで正しいのか！？
-        //  $images= new Imege;
-        //  $images->name = $request->name;
-        //  $images->img_url = $request->img_url;
-         
-         return redirect('/items_admin');
+         //public/uploadフォルダを作成
+         $target_path = public_path('/uploads/');
+
+         //ファイルをpublic/uploadフォルダに移動
+         $file->move($target_path,$fileName);
+
+    }else{
+
+        return redirect('/items_admin');
     }
+
+    return redirect('/items_admin');
+         
+    }
+    
+    
 
     /**
      * Display the specified resource.

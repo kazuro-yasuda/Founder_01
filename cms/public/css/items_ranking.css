@@ -1,0 +1,33 @@
+
+.ranking {
+  counter-reset: rank;
+  list-style: none
+}
+ 
+.ranking li {
+  position: relative;
+  float: left;
+}
+ 
+.ranking li:not(:last-child) {
+  margin-bottom: 10px;
+}
+ 
+.ranking li::before { /* ラベルのスタイル */
+  content: "";
+  position: absolute;
+  border-bottom: 100px solid transparent;
+  border-left: 100px solid rgba(0,0,0,0.8);
+}
+ 
+.ranking li::after { /* 順位（文字）のスタイル */
+  counter-increment: rank;
+  content: counter(rank) " 位";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2em;
+  color: #fff;
+}
+ 
+

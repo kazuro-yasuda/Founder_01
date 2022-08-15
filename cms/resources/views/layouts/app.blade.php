@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/items_ranking.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
@@ -80,6 +82,8 @@
             @yield('content')
         </main>
     </div>
+    
+    
     
     <!--フッター-->
   <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
