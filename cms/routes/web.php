@@ -46,9 +46,6 @@ Route::get('/item/{id}', [ItemController::class, 'index']);
 //「気になるボタン」比較ページ表示
 Route::get('/compare/{item_unite_id}', [CompareController::class, 'intereste']);
 
-//中間テーブルのデータをもとに比較画面表示
-//Route::get('/compare/{unite_id}', [CompareController::class, 'index']);
-
 //「気になるボタン」uniteテーブル・中間テーブルに保存
 Route::post('/compare/create', [CompareController::class, 'create']);
 
