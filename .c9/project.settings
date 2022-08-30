@@ -9,7 +9,17 @@
         "@editor.suggest.preview": true,
         "@editor.suggest.showMethods": true
     },
+    "format": {
+        "jsbeautify": {
+            "@jslinthappy": true,
+            "@preserveempty": true
+        }
+    },
+    "instance": {
+        "@automaticShutdown": "30"
+    },
     "language": {
+        "@unusedFunctionArgs": false,
         "tern_defs": {
             "json()": {
                 "browser": {

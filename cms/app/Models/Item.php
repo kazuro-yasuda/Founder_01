@@ -32,10 +32,16 @@ class Item extends Model
      public function user() {
         return $this->belongsTo('App\Models\User');
     }
-     // Userテーブルとの多対多リレーション（中間テーブル用）
+     // Userテーブルとの多対多リレーション（中間テーブル:item_user用）
      //ひとつの商品は、複数ユーザーに「いいね」される
      public function nice_users() {
         return $this->belongsToMany('App\Models\User');
+    }
+    
+     // Uniteテーブルとの多対多リレーション（中間テーブル:item_unite用）
+     //ひとつの商品は、複数ユニットに「気になるチェック」される
+     public function unites() {
+        return $this->belongsToMany('App\Models\Unite');
     }
     
     

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Company;
+use App\Models\Unite;
 use Auth;
 use Validator;
 
@@ -13,6 +14,7 @@ use Validator;
 class ItemsController extends Controller
 {
     
+    //商品一覧表示（ランキング昇順表示）
     public function index()
     {
         // $items = Item::all();
@@ -26,7 +28,7 @@ class ItemsController extends Controller
     }
     
     
-    
+    //「いいね機能」
     //ログインユーザーが、商品に「いいね」をすると中間テーブルにデータ保存
     public function nice($item_id)
     {
@@ -44,5 +46,7 @@ class ItemsController extends Controller
         return redirect('/items');
         
     }
+    
+    
     
 }

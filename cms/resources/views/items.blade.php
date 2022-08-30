@@ -8,7 +8,7 @@
          <!--※要実装：medium_category_name　を引っ張ってくる！-->
         <h1 class="fw-light fw-bold text-danger">紙オムツ</h1>
         <iframe width="560" height="315" 
-         src="https://www.youtube.com/embed/dH988mw_kTg?autoplay=10?autoplay=1&mute=1" 
+         src=https://www.youtube.com/embed/dH988mw_kTg?autoplay=1&mute=1
          title="YouTube video player" 
          frameborder="0" 
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -23,15 +23,9 @@
     </div>
   </section>
   
+ 
   <div class="container">
-    <a href="compare">
-      <div class="btn btn-dark position-relative fs-3">
-        気になる商品をチェック & 動画比較スタート！
-      <svg width="1em" height="1em" viewBox="0 0 16 16" class="position-absolute top-100 start-50 translate-middle mt-1 bi bi-caret-down-fill" fill="#212529" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
-      </div>
-    </a>
-  </div>
-
+    
 
   <div class="album py-5 bg-light">
     <div class="container">
@@ -41,13 +35,14 @@
         @foreach ($items as $item)
    
           <div class="col">
-            <div class="card shadow-sm">
               <div>
                   @if ($loop->iteration)
-                  <p class="badge bg-danger fs-4">{{$item->current_ranking}}位</p>
+                  <p class="badge bg-danger fs-4 m-0">{{$item->current_ranking}}位</p>
                   @endif
               </div>
               
+              <div class="card shadow-sm">
+                
                 <!--動画-->
                  <iframe width="100%" height="225" 
                  src={{ $item->video_url1 }}
@@ -62,18 +57,18 @@
                   <p class="card-text fs-5">ブランド名：{{ $item->company->name}}</p>
                   
                 　<!--商品名-->
-                  <p class="card-text fs-4 fw-bold">商品名：{{ $item->name }}</p>
+                  <p class="card-text text-danger fs-5 fw-bold">{{ $item->name }}</p>
                   
                   <!--商品画像-->
-                  <img src="{{ asset('uploads/' . $item->img_url_main) }}" class="w-50">
+                  <img src="{{ asset('uploads/' . $item->img_url_main) }}" class="w-50 rounded mx-auto d-block">
              
                   
                   <div class="d-flex justify-content-between align-items-center">
                     
-                    <!--詳細ボタン-->
-                    <div>
-                      <a href="item"><button type="button" class="btn btn-primary">詳細</button></a>
-                    </div> 
+            
+                    <!--　詳細画面へ -->
+                    <a href="/item/{{$item->id }}" class="btn btn-primary">詳細</a>
+                    
                     
                     <!--いいね！ボタン-->
                     <form action="{{ url('/items/'.$item->id) }}" method="POST">
@@ -83,25 +78,36 @@
                     	</button>
                     </form>
                     
-                     <!--気になるボタン-->
-                       
-                       
-                       
-                       
-                       
-                    
-                  </div>
+                    <!--気になるボタン-->
+                      <form id="intereste" >
+                        <label>
+                          {{--<input type="hidden" name="item" value="{{$item->id}} id=hidden_item">--}}
+                          <input type="checkbox" name="item" value="{{$item->id}}" class="checkbox" onchange="onchange()">
+                         　気になる
+                        </label>
+                      </form> 
+               
+                   </div>
                 </div>
             </div>
        </div>
         @endforeach
-    
+       </div>
+       
+       
+           　<!--比較画面へ遷移するボタン-->
+           　<form action="{{url('/compare/create')}}" method="POST">
+            	{{ csrf_field() }}
+           　 	
+             　 <div class="row">
+                 <input type="hidden" name="compare_items" id="compare_item">
+                 <input type="submit" name="" class="btn btn-outline-warning" value= "気になる商品をチェック & 動画比較スタート!" id="compare" >
+               </div>
+              
+             </form>
       
-        
-      
-      </div>
+
       </div>  
     </div>   
-
-
+    
 @endsection

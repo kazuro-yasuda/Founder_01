@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Item;
+use App\Models\User;
 use Validator;
+use Auth;
 
 class ItemController extends Controller
 {
@@ -12,11 +14,20 @@ class ItemController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @param int $id
      */
-    public function index()
+     
+     //商品詳細画面を表示
+    public function index($id)
     {
-        return view('item');
-      }
+        
+      //詳細画面でitems.blade.phpで選んだ商品画面を表示
+        
+        //$items = Item::all($id);
+        $item = Item::find($id);
+        return view('item',['item'=> $item]);
+    }
+      
 
     /**
      * Show the form for creating a new resource.

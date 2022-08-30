@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
     
     
-     // Itemsテーブルとの多対多リレーション（中間テーブル用）
+     // Itemsテーブルとの多対多リレーション（中間テーブル：item_user用）
      //一人のユーザーは、複数の商品に「いいね」できる
      public function nice_items() {
         return $this->belongsToMany('App\Models\Item');
@@ -62,6 +62,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Unite');
     }
     
+     // Unitesテーブルとのリレーション （主テーブル側）
+    //一人のユーザーは、複数Uniteに属する
+    public function unites() {
+        return $this->hasMany('App\Models\Unite');
+    }
+
 
 
 }

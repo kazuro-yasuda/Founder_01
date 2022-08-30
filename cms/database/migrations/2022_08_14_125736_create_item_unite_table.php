@@ -17,9 +17,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('unite_id');
             $table->unsignedBigInteger('item_id');
-            //$table->foreign('unite_id')->references('id')->on('units')->onDelete('cascade'); //外部キー参照
-            //$table->foreign('item_id')->references('id')->on('items')->onDelete('cascade'); //外部キー参照
-            //$table->unique(['unite_id', 'item_id'],'uq_roles'); //Laravelは複合主キーが扱いにくいのでユニークで代用
+            $table->foreign('unite_id')->references('id')->on('unites')->onDelete('cascade'); //外部キー参照
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade'); //外部キー参照
+            $table->unique(['unite_id', 'item_id'],'uq_roles'); //Laravelは複合主キーが扱いにくいのでユニークで代用
             $table->timestamps();
 
         });

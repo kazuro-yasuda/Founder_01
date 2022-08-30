@@ -5,11 +5,23 @@
  <div class="container">
   <div class="row">
     <div class="col">
-      <iframe width="100%" height="271" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       <p class="bg-primary text-white text-center fs-4" style="width: 12rem;">吸水性実験</p>
+     <iframe width="100%" height="225" 
+       src={{ $item->video_url1 }}
+       title="YouTube video player" 
+       frameborder="0" 
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+       allowfullscreen>
+     </iframe>
+　　 <p class="bg-primary text-white text-center fs-4" style="width: 12rem;">吸水性実験</p>
     </div>
     <div class="col">
-      <iframe width="100%" height="271" src="https://www.youtube.com/embed/EuwpR46wSh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="100%" height="225" 
+       src={{ $item->video_url2 }}
+       title="YouTube video player" 
+       frameborder="0" 
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+       allowfullscreen>
+     </iframe>
        <p class="bg-success text-white text-center fs-4" style="width: 12rem;">通気性実験</p>    
     </div>
    </div>
@@ -28,13 +40,13 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{asset('img/pampers/pampers-main.jpg')}}" class="d-block w-100" alt="">
+              <img src="{{ asset('uploads/' . $item->img_url_main) }}" class="d-block w-100" alt="">
             </div>
             <div class="carousel-item">
-              <img src="{{asset('img/pampers/pampers1.jpg')}}" class="d-block w-100" alt="">
+              <img src="{{ asset('uploads/' . $item->img_url1) }}"  class="d-block w-100" alt="">
             </div>
             <div class="carousel-item">
-              <img src="{{asset('img/pampers/pampers2.jpg')}}" class="d-block w-100" alt="">
+              <img src="{{ asset('uploads/' . $item->img_url2) }}"  class="d-block w-100" alt="">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselImgIndicators" data-bs-slide="prev">
@@ -50,28 +62,25 @@
       
       <div class="col-6">
        <div class="card-body">
-              <p class="card-text fs-5">メーカー：パンパース</p>
-              <p class="card-text fs-5">商品名：はじめての肌へのいちばん</p><br>
-              <p class="card-text">【商品詳細】<br>
-              ●厳選された羽毛のような素材による、パンパース史上最高のやわらかさ。<br>
-              ●3D穴あきメッシュシートでゆるゆるうんちを吸収<br>
-              ●いつでも360度フレッシュエア通気<br>
-              ●2倍のびる のびのびストレッチ<br>
-              ●「3つのマジック吸収体」で分散して即吸収<br>
-              ●小さめの赤ちゃんにも安心 重ねてつけられるテープ！
+              <p class="card-text fs-5">ブランド名：{{ $item->company->name}}</p>
+              <p class="card-text fs-4 fw-bold">商品名：{{ $item->name }}</p>
+              <p class="card-text fs-6">【商品詳細】<br>
+              {{ $item->text }}
               </p>
     　  </div> 
       </div>
       
-      <div class="col-3 bg-info">
-       <p>公式HPのURL</p>
-       <p>amazonアフィリエイトリンク</p>
-       <p>楽天アフィリエイトリンクト</p>
-       <p>ヤフーアフィリエイトリンク</p>
+      <div class="col-3">
+        <div class="d-flex flex-column">
+          <button type="button" class="btn btn-primary">公式HP</button>
+          <button type="button" class="btn btn-danger">楽天</button>
+          <button type="button" class="btn btn-secondary">amazon</button>
+          <button type="button" class="btn btn-success">ヤフーショッピング</button>
+      </div>
       </div>
       
     </div>
   </div>
-  
+
   
 @endsection

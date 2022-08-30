@@ -9,8 +9,9 @@ use App\Http\Controllers\ItemsAdminController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\MediumCategoryController;
 use App\Http\Controllers\ImageController;
-// use App\Http\Controllers\ItemsAdminController;//追記
-use App\Models\Item;
+use App\Http\Controllers\ItemDetailController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Models\Item;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//[ ユーザー側の画面関係]
 
 //トップページ表示
 Route::get('/', [WelcomeFounderController::class, 'index']);
@@ -32,14 +34,29 @@ Route::get('/categories',  [MediumCategoryController::class, 'index']);
 //商品一覧ページ表示
 Route::get('/items',   [ItemsController::class, 'index']);
 
+// いいねボタン
+ Route::post('/items/{item_id}', [ItemsController::class, 'nice']); 
+
 //商品詳細ページ表示
-Route::get('/item', [ItemController::class, 'index']);
-
-//比較ページ表示
-Route::get('/compare', [CompareController::class, 'index']);
+Route::get('/item/{id}', [ItemController::class, 'index']);
 
 
 
+
+//「気になるボタン」比較ページ表示
+Route::get('/compare/{item_unite_id}', [CompareController::class, 'intereste']);
+
+//中間テーブルのデータをもとに比較画面表示
+//Route::get('/compare/{unite_id}', [CompareController::class, 'index']);
+
+//「気になるボタン」uniteテーブル・中間テーブルに保存
+Route::post('/compare/create', [CompareController::class, 'create']);
+
+
+
+
+
+//[ 管理者側の画面関係]
 // ①商品の追加ダッシュボード表示(items_admin.blade.php)
  Route::get('/items_admin', [ItemsAdminController::class, 'index']);
  
@@ -54,9 +71,6 @@ Route::get('/compare', [CompareController::class, 'index']);
 // Route::delete('/@@@k/{@@@}',[ItemsAdminController::class, 'destroy']);
 
 
-// いいねボタン
- Route::post('/items/{itemid}', [ItemsController::class, 'nice']); 
- 
 //画像アップロード画面表示
 //Route::get('/image', [ImageController::class, 'index']);
 
